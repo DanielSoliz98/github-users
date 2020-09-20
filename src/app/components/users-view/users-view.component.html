@@ -1,1 +1,57 @@
-<p>users-view works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <span class="navbar-brand">
+    <img
+      src="../../../assets/github.svg"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt=""
+      loading="lazy"
+    />
+    GitHub Users
+  </span>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link text-white" href="/users">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="row justify-content-center">
+    <form
+      class="form-inline p-5"
+      [formGroup]="searchForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search GitHub Users"
+        formControlName="userInput"
+        aria-label="Search"
+        required
+      />
+
+      <button
+        class="btn btn-primary my-2 my-sm-0"
+        type="submit"
+        [disabled]="searchForm.invalid"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+</div>
