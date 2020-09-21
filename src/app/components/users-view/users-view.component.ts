@@ -26,12 +26,11 @@ export class UsersViewComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    console.log(this.user.value);
     this.username = this.user.value;
-    this.userService.getUsers(this.user.value, this.page).subscribe((data) => {
+    this.user.setValue("");
+    this.users = [];
+    this.userService.getUsers(this.username, this.page).subscribe((data) => {
       this.users.push(data.items as User[]);
-      this.user.setValue("");
-      console.log(data.items as User[]);
     });
   }
 
