@@ -1,15 +1,23 @@
 <div class="container-fluid">
   <div class="row" *ngIf="username">
-    <div class="col text-center">
+    <div
+      class="col text-center p-3"
+      *ngIf="repositories[0].length > 0; else noRepositories"
+    >
       <h5>Repositories of {{ username }}</h5>
     </div>
+    <ng-template #noRepositories>
+      <div class="col text-center p-3">
+        <h5>No repositories of {{ username }}</h5>
+      </div>
+    </ng-template>
   </div>
   <div class="row" *ngFor="let rowRepos of repositories">
     <div class="col p-1" *ngFor="let repo of rowRepos">
       <app-repo-detail-card [repository]="repo"></app-repo-detail-card>
     </div>
   </div>
-  <nav>
+  <nav *ngIf="repositories[0].length > 0">
     <ul class="pagination justify-content-center p-2">
       <li class="page-item" *ngIf="actualPage != 1">
         <a
@@ -28,7 +36,7 @@
       >
         <a class="page-link" (click)="getPage(page)">{{ page }}</a>
       </li>
-      <li class="page-item">
+      <li class="page-item" *ngIf="actualPage != pages">
         <a
           class="page-link"
           (click)="getPage(actualPage + 1)"
