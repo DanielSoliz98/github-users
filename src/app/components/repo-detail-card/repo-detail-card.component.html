@@ -1,0 +1,21 @@
+<div class="card p-1">
+  <div class="row no-gutters">
+    <div class="col-md-12">
+      <div class="card-body">
+          <h5 class="card-title">Repository name: {{ repository.name }}</h5>
+          <p *ngIf="repository.description">Description: {{ repository.description }}</p>
+          <p *ngIf="!repository.description">Description: No description</p>
+          <p>Issues: {{ issues_count }}</p>
+          <p>Open issues: {{ repository.open_issues_count }}</p>
+          <p>Forks: {{ repository.forks_count }}</p>
+          <button
+            type="button"
+            class="btn btn-warning btn-block"
+            (click)="openTab()"
+          >
+            Open in GitHub
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
