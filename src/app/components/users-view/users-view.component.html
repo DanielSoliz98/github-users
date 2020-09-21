@@ -29,7 +29,7 @@
     </ul>
   </div>
 </nav>
-<div class="container">
+<div class="container-fluid search-bar">
   <div class="row justify-content-center">
     <form
       class="form-inline p-5"
@@ -46,7 +46,7 @@
       />
 
       <button
-        class="btn btn-primary my-2 my-sm-0"
+        class="btn btn-dark my-2 my-sm-0"
         type="submit"
         [disabled]="searchForm.invalid"
       >
@@ -56,9 +56,21 @@
   </div>
 </div>
 <div class="container-fluid">
+  <div class="row" *ngIf="username">
+    <div class="col text-center">
+      <h5>{{ totalUsers }} results of username: {{ username }}</h5>
+    </div>
+  </div>
   <div class="row" *ngFor="let rowUsers of users">
     <div class="col p-1" *ngFor="let user of rowUsers">
       <app-user-detail-card [user]="user"></app-user-detail-card>
+    </div>
+  </div>
+  <div class="row p-2" *ngIf="pages > 1 && actualPage < pages">
+    <div class="col text-center">
+      <button class="btn btn-primary" (click)="loadUsers()">
+        Load more users
+      </button>
     </div>
   </div>
 </div>
