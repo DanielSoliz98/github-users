@@ -13,9 +13,11 @@ export class RepoDetailCardComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getIssues(this.repository.issues_url).subscribe((data) => {
-      this.issues_count = data.length;
-    });
+    this.userService
+      .getIssues(this.repository.issues_url.replace("{/number}", ""))
+      .subscribe((data) => {
+        this.issues_count = data.length;
+      });
   }
 
   openTab(): void {

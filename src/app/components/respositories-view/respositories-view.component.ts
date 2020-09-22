@@ -35,8 +35,9 @@ export class RespositoriesViewComponent implements OnInit {
   }
 
   getPage(page: number) {
+    this.actualPage = page;
     this.userService.getRepositories(this.repo_url, page).subscribe((repos) => {
-      this.repositories.pop();
+      this.repositories = [];
       this.repositories.push(repos);
     });
   }
