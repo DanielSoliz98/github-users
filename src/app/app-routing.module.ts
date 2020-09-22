@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { UsersViewComponent } from "./components/users-view/users-view.component";
 
+const routes: Routes = [
+  { path: "", redirectTo: "/users", pathMatch: "full" },
 
-const routes: Routes = [];
+  { path: "users", component: UsersViewComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
